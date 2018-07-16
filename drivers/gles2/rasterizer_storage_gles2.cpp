@@ -1728,8 +1728,8 @@ void RasterizerStorageGLES2::instance_remove_dependency(RID p_base, RasterizerSc
 
 void RasterizerStorageGLES2::_render_target_allocate(RenderTarget *rt) {
 
-	if (rt->width <= 0 || rt->height <= 0)
-		return;
+	rt->width = rt->width > 0 ? rt->width : 1;
+	rt->height = rt->height > 0 ? rt->height : 1;
 
 	Texture *texture = texture_owner.getornull(rt->texture);
 	ERR_FAIL_COND(!texture);
