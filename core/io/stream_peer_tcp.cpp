@@ -258,14 +258,7 @@ StreamPeerTCP::Status StreamPeerTCP::get_status() {
 				disconnect_from_host();
 				return status;
 			}
-		}
-		// Also poll write
-		err = _sock->poll(NetSocket::POLL_TYPE_IN_OUT, 0);
-		if (err != OK && err != ERR_BUSY) {
-			// Got an error
-			disconnect_from_host();
-			status = STATUS_ERROR;
-		}
+		}		
 	}
 
 	return status;
